@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        font-family: "poppins", sans-serif;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        width: 100%;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;     
+          /* background: linear-gradient(45deg, blue); */
+      }
+      .calculator {
+        border: 1px solid gray;
+        border-radius: 20px;
+        padding: 20px;
+        background: transparent;
+        box-shadow: 0px 3px 15px gray;
+      }
+      input {
+        width: 280px;
+        padding: 20px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        font-size: 40px;
+        outline: none;
+
+        border-radius: 20px;
+        text-align: right;
+        color: #ffffff;
+        margin: 10px;
+      }
+      input::placeholder {
+        color: #ffffff;
+      }
+      button {
+        border: none;
+        height: 60px;
+        width: 60px;
+        background-color: black;
+        font-size: 20px;
+        margin: 10px;
+/* background: transparent; */
+        color: white;
+        border-radius: 50%;
+        color: #ffffff;
+        box-shadow: -8px -8px 15px rgb(113, 112, 112);
+        padding: 10px;
+        cursor: pointer;
+      }
+      .equalbtn {
+        height: 60px;
+        width: 60px;
+        background-color: gray;
+        box-shadow: -5px -5px 15px rgb(152, 149, 149);
+
+        color: rgb(184, 177, 177);
+        border-radius: 50%;
+      }
+      .opr1 {
+        height: 60px;
+        width: 60px;
+        background-color: orange;
+        padding: 10px;
+        color: #ffffff;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <input type="text" id="input1" placeholder="0" />
+        <div>
+          <button class="button opr">AC</button>
+          <button class="button opr">DEL</button>
+          <button class="button opr">%</button>
+          <button class="button opr1">/</button>
+        </div>
+        <div>
+          <button class="button">7</button>
+          <button class="button">8</button>
+          <button class="button">9</button>
+          <button class="button opr1">*</button>
+        </div>
+        <div>
+          <button class="button">4</button>
+          <button class="button">5</button>
+          <button class="button">6</button>
+          <button class="button opr1">-</button>
+        </div>
+        <div>
+          <button class="button">1</button>
+          <button class="button">2</button>
+          <button class="button">3</button>
+          <button class="button opr1">+</button>
+        </div>
+        <div>
+          <button class="button">00</button>
+          <button class="button">0</button>
+          <button class="button">.</button>
+          <button class="button equalbtn">=</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      button = document.querySelectorAll("button");
+      input1 = document.getElementById("input1");    
+
+      let string = "";
+      let arr = Array.from(button);
+      arr.forEach((button) => {
+        
+        button.addEventListener("click", (e) => {
+          
+
+          if (e.target.innerHTML == "=") {
+            string = eval(string);
+            input1.value = string;
+          } else if (e.target.innerHTML == "AC") {
+            string = "";
+            input1.value = string;
+          } else if (e.target.innerHTML == "DEL") {
+            string = string.substring(0,string.length - 1);
+            input1.value = string;
+          } else {
+            string += e.target.innerHTML;
+            input1.value = string;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
